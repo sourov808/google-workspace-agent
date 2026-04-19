@@ -9,9 +9,25 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.64",
+    "@ai-sdk/ui-utils": "^1.2.11",
+    "@langchain/community": "^1.1.27",
+    "@langchain/core": "^1.1.40",
+    "@langchain/google-genai": "^2.1.27",
+    "@langchain/langgraph": "^1.2.9",
+    "@langchain/openai": "^1.4.4",
+    "@supabase/auth-helpers-nextjs": "^0.15.0",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.103.3",
+    "@tavily/core": "^0.7.2",
+    "ai": "^3.4.33",
+    "framer-motion": "^12.38.0",
+    "googleapis": "^171.4.0",
+    "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
