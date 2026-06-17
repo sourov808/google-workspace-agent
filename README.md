@@ -60,6 +60,3 @@ OPENAI_API_KEY=
 TAVILY_API_KEY=
 ```
 Google OAuth (Client ID/Secret) and the redirect URL are configured in your Supabase project's Auth provider settings, with these scopes enabled: `gmail.modify`, `calendar`, `documents`.
-
-## 📝 License
-MIT
