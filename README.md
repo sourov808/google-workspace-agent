@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 Google Workspace AI Agent
 
-## Getting Started
+An AI assistant that doesn't just chat — it **takes action across your Google Workspace.** Sign in with your Google account and ask it, in plain language, to read and send emails, manage your calendar, and search the web. Built as a real tool-using agent with LangGraph.
 
-First, run the development server:
+> _"Find emails about the invoice and schedule a follow-up call for Friday at 3pm."_ — and it actually does it.
 
+<!-- 📸 TODO: add a screenshot or GIF of the agent in action, then uncomment:
+![Demo](./public/demo.gif) -->
+
+## 🔗 Live Demo
+<!-- 🚀 TODO: paste your Vercel URL here after deploying -->
+**[Try it live →](https://your-deploy-url.vercel.app)**
+
+## ✨ Features
+- **Conversational agent** — describe what you want in natural language; the agent decides which tools to use.
+- **📧 Gmail** — search your inbox and send emails on your behalf.
+- **📅 Google Calendar** — list upcoming events and create new ones.
+- **📄 Google Docs** — access enabled via OAuth scope.
+- **🌐 Web search** — pulls live information from the web via Tavily.
+- **🔐 Secure Google login** — OAuth 2.0 through Supabase Auth; the agent acts only with the permissions you grant.
+
+## 🛠️ Tech Stack
+- **Framework:** Next.js (App Router) + TypeScript
+- **AI / Agent:** LangChain + **LangGraph** (`createReactAgent`), OpenAI (`ChatOpenAI`)
+- **Tools:** Google APIs (Gmail, Calendar, Docs), Tavily web search
+- **Auth & Backend:** Supabase Auth (Google OAuth) + Supabase SSR
+- **Styling:** Tailwind CSS
+
+## 🧠 How It Works
+1. The user signs in with Google; Supabase handles OAuth and returns an access token scoped for Gmail, Calendar, and Docs.
+2. On each request, the API route (`app/api/chat/route.ts`) builds a set of **tools** bound to that access token — `search_gmail`, `send_email`, `list_calendar_events`, `create_calendar_event`, and web search.
+3. A **LangGraph ReAct agent** receives the user's message plus history, reasons about which tool(s) to call, runs them against the real Google APIs, and replies with the result.
+
+This is a true **agentic** pattern: the LLM doesn't just answer — it chooses and runs actions, then uses the results to respond.
+
+## 🚀 Run Locally
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/sourov808/google-workspace-agent.git
+cd google-workspace-agent
+pnpm install
+cp .env.example .env.local   # then fill in your values
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment variables
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+OPENAI_API_KEY=
+TAVILY_API_KEY=
+```
+Google OAuth (Client ID/Secret) and the redirect URL are configured in your Supabase project's Auth provider settings, with these scopes enabled: `gmail.modify`, `calendar`, `documents`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 License
+MIT
