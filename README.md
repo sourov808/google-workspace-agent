@@ -1,15 +1,25 @@
 # 🤖 Google Workspace AI Agent
 
+![Google Workspace AI Agent Hero](public/ai_agent_workspace_hero_1776600813643.png)
+
 An AI assistant that doesn't just chat — it **takes action across your Google Workspace.** Sign in with your Google account and ask it, in plain language, to read and send emails, manage your calendar, and search the web. Built as a real tool-using agent with LangGraph.
 
 > _"Find emails about the invoice and schedule a follow-up call for Friday at 3pm."_ — and it actually does it.
 
-<!-- 📸 TODO: add a screenshot or GIF of the agent in action, then uncomment:
-![Demo](./public/demo.gif) -->
+## 📸 Preview
+
+### Chat Interface & Tool Execution
+![Agent Chat Interface](public/screenshot_chat.png)
+
+### Action Completed (Successfully Sent Email)
+![Email Sent Successfully](public/screenshot.png)
+
+### 🎥 Demo Walkthrough
+<video src="public/google_workspace.mp4" width="100%" controls></video>
 
 ## 🔗 Live Demo
-<!-- 🚀 TODO: paste your Vercel URL here after deploying -->
-**[Try it live →](https://your-deploy-url.vercel.app)**
+**[Try it live →](https://google-workspace-agent.vercel.app)**
+
 
 ## ✨ Features
 - **Conversational agent** — describe what you want in natural language; the agent decides which tools to use.
